@@ -37,7 +37,7 @@ Mientras terminan de correr nuestros analisis denovo en stacks, vamos a montar a
 Semana 7
 --
 
-Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para el de novo genotyping, debemos exportar y filtrar la matriz de SNPs para tener ya nuestras matrices finales para los analisis 'downstream' de nuestros datos genomicos... para finalmente responder preguntas biologicas!! Para esto, vamos a tener que hacer unos cuantos pasos bioinformaticos, los cuales ya hemos manejado antes asi que toca practicar! 
+Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para el de novo genotyping, debemos exportar y filtrar la matriz de SNPs para tener ya nuestras matrices finales para los analisis 'downstream' de nuestros datos genomicos... para finalmente responder preguntas biologicas!! Para esto, vamos a tener que hacer unos cuantos pasos bioinformaticos, principalmente usando [plink]() los cuales ya hemos manejado antes asi que toca practicar! 
 
 **plink | filtrando datos**
 
