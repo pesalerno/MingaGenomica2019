@@ -38,6 +38,9 @@ Semana 4, 5, y 6...
 
 En la cuarta semana empezaremos a hacer el genotyping utilizando el programa [denovo_map](http://catchenlab.life.illinois.edu/stacks/comp/denovo_map.php) en stacks. Para esto, es recomendable que se lean con mucho detenimiento esta publicacion de [Paris et al. 2017](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf), en la que se describen muchas de las cosas que estaremos haciendo y los problemas que estaremos investigando en los proximos pasos de la minga. 
 
+Para realmente entender como funciona *github* y crear y colaborar en sus propios repositorios (proyectos), hice un tutorial corto que pueden encontrar [aqui](). 
+
+
 Duraremos 2-4 semanas en el *denovo genotyping*, y en el proceso tambien estaremos graficando analisis preliminares en R utilizando el programa de genomica poblacional, [adegenet](http://adegenet.r-forge.r-project.org/), para observar potenciales sesgos dentro de nuestros datos. Dado que hay que correr el analisis *denovo* muchas veces para evaluar como las distintas combinaciones de parametros pueden resultar en distintas proporciones de alelos retenidos y en distintas proporciones de error. En este paso, cada liberia/proyecto tendra condiciones muy distintas que resultaran en que corramos distintos analisis, y que escojamos distintos parametros! Esto se discutira. Intentaremos graficar nuestros resultados utilizando R para que sean publicables como graficos suplementarios, asi como las figuras de Paris et al! 
 
 **ipyrad | *de novo* genotyping of subset**
