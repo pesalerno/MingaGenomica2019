@@ -2,7 +2,7 @@ comenzando con github
 -
 Primero, no se asusten, la confusion y la sorpresa es normal en el proceso de aprendizaje de cualquiera....
 
-![scary coding](/Users/patriciasalerno/Downloads/minga-confusa.jpg)
+![scary coding](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/minga-confusa.jpg)
 
 
 Ahora ya si, empecemos... jaja. 
@@ -16,7 +16,7 @@ Esta semana, quiero que instalen, hagan tutorial, e intenten poner sus documento
 
 **2.ABRIR un repositorio en el website de git** de la siguiente manera (pero poniendole el nombre de repositorio que quieran... corto! sin espacios!):
 
-![new repo](/Users/patriciasalerno/Desktop/Screen Shot 2019-05-14 at 1.39.56 PM.png)
+![new repo](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/newrepo.png)
 
 
 **3.Montar archivos en el repositorio utilizando la linea de comando** 
@@ -44,7 +44,7 @@ Ahora, deberian tener el repositorio guardado donde hicieron el comando, el cual
 
 Este comando indica todo lo que esta igual o distinto en tu repositorio local de acuerdo al original que clonaron. Deberia salirles algo asi: 
  
- ![status](/Users/patriciasalerno/Desktop/Screen Shot 2019-05-14 at 2.03.45 PM.png)
+ ![status](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/gitstatus.png)
 
 
 Luego, queremos agregar el archivo. Para eso, hacemos: 

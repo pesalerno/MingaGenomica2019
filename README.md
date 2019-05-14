@@ -31,6 +31,16 @@ la principal tarea de la tercera semana de la minga sera separar los individuos 
 
 Antes de la semana 4, tambien intentaremos preparar los dos principales "input files" para utilizar en **denovo_map.pl**, los cuales requieren de unos cuantos pasos bioinformaticos como se puede ver en este ejemplo!  
 
+
+Tutorial para comenzar con github
+-
+
+Para realmente entender como funciona *github* y crear y colaborar en sus propios repositorios (proyectos), hice un tutorial corto que pueden encontrar [aqui](https://github.com/pesalerno/MingaGenomica2019/blob/master/git-minga.md). 
+
+
+Una vez que ya se sientan comodos con eso, pueden intentar entre ustedes colaborar en sus proyectos (es decir, que todos puedan montar modificaciones al mismo proyecto en github) con otro [tutorial que escribi en ingles para colaborar en github](https://github.com/pesalerno/PUMAgenomics/blob/master/git-collaborating-protocol.md). Suerte!! 
+
+
 Semana 4, 5, y 6...
 ---
 
@@ -38,14 +48,15 @@ Semana 4, 5, y 6...
 
 En la cuarta semana empezaremos a hacer el genotyping utilizando el programa [denovo_map](http://catchenlab.life.illinois.edu/stacks/comp/denovo_map.php) en stacks. Para esto, es recomendable que se lean con mucho detenimiento esta publicacion de [Paris et al. 2017](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf), en la que se describen muchas de las cosas que estaremos haciendo y los problemas que estaremos investigando en los proximos pasos de la minga. 
 
-Para realmente entender como funciona *github* y crear y colaborar en sus propios repositorios (proyectos), hice un tutorial corto que pueden encontrar [aqui](). 
-
-
 Duraremos 2-4 semanas en el *denovo genotyping*, y en el proceso tambien estaremos graficando analisis preliminares en R utilizando el programa de genomica poblacional, [adegenet](http://adegenet.r-forge.r-project.org/), para observar potenciales sesgos dentro de nuestros datos. Dado que hay que correr el analisis *denovo* muchas veces para evaluar como las distintas combinaciones de parametros pueden resultar en distintas proporciones de alelos retenidos y en distintas proporciones de error. En este paso, cada liberia/proyecto tendra condiciones muy distintas que resultaran en que corramos distintos analisis, y que escojamos distintos parametros! Esto se discutira. Intentaremos graficar nuestros resultados utilizando R para que sean publicables como graficos suplementarios, asi como las figuras de Paris et al! 
 
 **ipyrad | *de novo* genotyping of subset**
 
 Mientras terminan de correr nuestros analisis denovo en stacks, vamos a montar analisis de genotyping en [ipyrad](https://ipyrad.readthedocs.io/) pero de un 'subset' de nuestros individuos. Para esto, es posible que necesitemos que se termine al menos uno de nuestros analisis de stacks y hacer un analisis rapido en adegenet para escoger el 'subset'. 
+
+
+
+
 
 Semana 7
 --
