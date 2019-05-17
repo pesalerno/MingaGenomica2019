@@ -38,11 +38,17 @@ Ahora, antes de trabajar en el repositorio en el computador LOCAL, vamos  a *"cl
 
 el "web adress" es literalmente la direccion web de su repositorio que acaban de crear, asi que haganle click al repositorio que crearon (para entrar en el) y de ahi copian y pegan la direccion web. 
 
-Ahora, deberian tener el repositorio guardado donde hicieron el comando, el cual pueden chequear con el comando `ls` para ver que este todo alli (solo deberia haber un directorio con el nombre que le dieron al "repo", y el README.md sin nada). Ahora, pueden remplazar ese documento vacio con el que llevan trabajando. Como cambiar solo una linea de un documento implica que le hicieron un cambio al repo, entonces veamos si **git** lo registro: 
+Ahora, deberian tener el repositorio guardado donde hicieron el comando `git clone` entonces desde ahi mismo metanse en la carpeta que clonaron: 
+
+	cd carpeta-de-proyecto
+	ls
+	git status
+
+Con el comando `ls` pueden ver que este todo el repositorio alli (que de momento solo deberia estar el **README.md** sin nada sino una primera linea de texto). El comando `git status` deberia decirles algo como "branch up to date with master", o algo parecido. Ahora, pueden remplazar ese documento **README.md** vacio con el que llevan trabajando. Como cambiar solo una linea de un documento implica que le hicieron un cambio al repo, entonces veamos si **git** lo registro: 
 
 	git status
 
-Este comando indica todo lo que esta igual o distinto en tu repositorio local de acuerdo al original que clonaron. Deberia salirles algo asi: 
+Este mismo comando de `git status` ahora deberia indicar que el archivo **README.md** contiene cambios. Deberia salirles algo asi: 
  
  ![status](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/gitstatus.png)
 
@@ -54,7 +60,7 @@ Luego, queremos agregar el archivo. Para eso, hacemos:
 
 Se agrego? Tercero, nos "comprometemos al cambio" del documento que agregamos en el paso anterior (el lenguage git es un poco extraño, pero asi son las cosas): 
 
-	git commit -m 'agreguen cualquier cosa aqui'
+	git commit -m 'agreguen cualquier mensaje aqui'
 	git status
 
 El paso anterior es algo medio raro, pero tiene sentido dado que git fue creado para programadores que estan todos trabajando a la vez en un mismo documento y sin tener mucha idea de que hace el otro... este es un paso de control... asi como: 
