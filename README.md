@@ -66,7 +66,7 @@ Dado que hay los cuatro proyectos que estamos trabajando en la minga son tan dis
 
 proyecto **toñitos** | workflow bioinformatico | *denovo*
 -
-a. Reunir todos los 'replicates' en un mismo directorio, de acuerdo a lo descrito por [Mastretta-Yanes et al]().
+a. Reunir todos los 'replicates' en un mismo directorio, de acuerdo a lo descrito por [Mastretta-Yanes et al](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Mastretta-Yanes-etal-2015.pdf).
 
 b. Ponerle los nombres a los replicates acorde con lo necesario: 
 
@@ -76,13 +76,15 @@ c. Hacer el diseño de los parametros a probar con los replicates basado en [est
 
 d. Montar todos los replicate analyses en el servidor **correns.csu**
 
-e. Intentar instalar MySQL con ayuda de nuuestro bioinformatico, tal vez...
+e. Intentar instalar MySQL con ayuda de nuuestro bioinformatico, tal vez... si no, pedimos ayuda a Chris K en este paso (creo que es lo mejor basado en experiencias previas). 
 
 f. Terminar el workflow de los 'replicate analyses' siguiendo el workflow de daryl en nuestro proyecto de los [**pumas**](https://github.com/pesalerno/PUMAgenomics).
 
 g. Concatenar los archivos de los duplicados, en un directorio separado, utilizando `cat` y exportando a un archivo nuevo, algo asi: 
 
 	cat seqfile001.fasta seqfile002.fasta > seqcombined.fasta
+
+h. Correr **denovo_map.pl** con todas las muestras utilizando los parametros ideales basados en las tasas de error calculadas en los pasos anteriores. 
 
 
 proyecto jimmys | workflow bioinformatico | *denovo*
@@ -96,7 +98,7 @@ b. Montar todos los analisis denovo en el servidor **correns.csu**
 
 ![secure-shell](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/correns.png)
 
-c. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi). 
+c. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi), utilizando como base el fantastico [tutorial de ipyrad]() y tambien la siguiente figura: 
 
 d. Montar los analisis de ipyrad en el servidor. 
 
