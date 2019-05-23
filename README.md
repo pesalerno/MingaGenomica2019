@@ -66,15 +66,23 @@ Dado que hay los cuatro proyectos que estamos trabajando en la minga son tan dis
 
 proyecto **toñitos** | workflow bioinformatico | *denovo*
 -
-a. Reunir todos los 'replicates' en un mismo directorio
+a. Reunir todos los 'replicates' en un mismo directorio, de acuerdo a lo descrito por [Mastretta-Yanes et al]().
 
-b. Ponerle los nombres a los replicates acorde con lo necesario
+b. Ponerle los nombres a los replicates acorde con lo necesario: 
 
-c. Hacer el diseño de los parametros a probar con los replicates
+> Sample1 (original), Sample1_r (replicate)
+
+c. Hacer el diseño de los parametros a probar con los replicates basado en [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) y [esta publicacion](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf). 
 
 d. Montar todos los replicate analyses en el servidor **correns.csu**
 
 e. Intentar instalar MySQL con ayuda de nuuestro bioinformatico, tal vez...
+
+f. Terminar el workflow de los 'replicate analyses' siguiendo el workflow de daryl en nuestro proyecto de los [**pumas**](https://github.com/pesalerno/PUMAgenomics).
+
+g. Concatenar los archivos de los duplicados, en un directorio separado, utilizando `cat` y exportando a un archivo nuevo, algo asi: 
+
+	cat seqfile001.fasta seqfile002.fasta > seqcombined.fasta
 
 
 proyecto jimmys | workflow bioinformatico | *denovo*
@@ -86,7 +94,7 @@ b. Montar todos los analisis denovo en el servidor **correns.csu**
 
 > Hablaremos un poco de servidores, de 'job schedulers', y de como funciona el 'secure shell'. 
 
-![secure-shell]()
+![secure-shell](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/correns.png)
 
 c. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi). 
 
