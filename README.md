@@ -117,7 +117,7 @@ c. Como van a tener que montar tantos analisis con pequeñs permutaciones de nom
 	for item in some_iterable_object:
     	do_something()
     	do_something_else()
-		```
+	```
 
 
 Semana 7
