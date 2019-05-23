@@ -44,17 +44,58 @@ Una vez que ya se sientan comodos con eso, pueden intentar entre ustedes colabor
 Semana 4, 5, y 6...
 ---
 
-**STACKS | *de novo* genotyping**
+**STACKS  and ipyrad | *de novo* genotyping**
 
-En la cuarta semana empezaremos a hacer el genotyping utilizando el programa [denovo_map](http://catchenlab.life.illinois.edu/stacks/comp/denovo_map.php) en **stacks**. Para esto, es necesario que se lean con mucho detenimiento [este tutorial]() donde se explican las funciones de los tres parametros principales de stacks, y tambien esta publicacion de [Paris et al. 2017](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf), en la que se describen muchas de las cosas que estaremos haciendo en el "experimento de genotipificacion" que estaremos haciendo en los proximos pasos de la minga. 
-
-Duraremos 2-4 semanas en el *denovo genotyping*, y en el proceso tambien estaremos graficando analisis preliminares en R utilizando el programa de genomica poblacional, [adegenet](http://adegenet.r-forge.r-project.org/), para observar potenciales sesgos dentro de nuestros datos. Dado que hay que correr el analisis *denovo* muchas veces para evaluar como las distintas combinaciones de parametros pueden resultar en distintas proporciones de alelos retenidos y en distintas proporciones de error. En este paso, cada liberia/proyecto tendra condiciones muy distintas que resultaran en que corramos distintos analisis, y que escojamos distintos parametros! Esto se discutira. Intentaremos graficar nuestros resultados utilizando R para que sean publicables como graficos suplementarios, asi como las figuras de Paris et al! 
-
-**ipyrad | *de novo* genotyping of subset**
-
-Mientras terminan de correr nuestros analisis denovo en stacks, vamos a montar analisis de genotyping en [ipyrad](https://ipyrad.readthedocs.io/) pero de un 'subset' de nuestros individuos. Para esto, es posible que necesitemos que se termine al menos uno de nuestros analisis de stacks y hacer un analisis rapido en adegenet para escoger el 'subset'. 
+A partir de la cuarta semana empezaremos a hacer el genotyping utilizando el programa [denovo_map](http://catchenlab.life.illinois.edu/stacks/comp/denovo_map.php) en **stacks**, y tambien para algunos proyectos usaremos [**ipyrad**](https://ipyrad.readthedocs.io/).
 
 
+Para **stacks** es necesario que se lean con mucho detenimiento [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) donde se explican las funciones de los tres parametros principales de stacks, y tambien esta publicacion de [Paris et al. 2017](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf), en la que se describen muchas de las cosas que estaremos haciendo en el "experimento de genotipificacion" que estaremos haciendo en los proximos pasos de la minga. 
+
+
+Para ipyrad es necesario que entiendan la Figura 3a de esta publicacion, ademas de 
+
+
+
+Duraremos 2-4 semanas en el *denovo genotyping*, y en el proceso tambien estaremos graficando analisis preliminares en R utilizando el programa de genomica poblacional, [adegenet](http://adegenet.r-forge.r-project.org/), para observar potenciales sesgos dentro de nuestros datos. 
+
+
+Dado que hay los cuatro proyectos que estamos trabajando en la minga son tan distintos, cada liberia/proyecto tendra condiciones muy distintas que resultaran en que corramos distintos analisis, y que escojamos distintos parametros! Esto se discutira en clase. Cuando terminemos este paso, la meta es tener ya lista la genotipificacion de todos los proyectos, incluidos escritos los metodos y resultados, para luego comenzar con el filtrado de las matrices de datos.
+
+> Abajo el primer esquema de lo que seran los workflows bioinformaticos de cada proyecto, los cuales iremos modificando a medida que vayamos avanzando.  
+
+
+proyecto **toñitos** | workflow bioinformatico | *denovo*
+-
+a. Reunir todos los 'replicates' en un mismo directorio
+
+b. Ponerle los nombres a los replicates acorde con lo necesario
+
+c. Hacer el diseño de los parametros a probar con los replicates
+
+d. Montar todos los replicate analyses en el servidor **correns.csu**
+
+e. Intentar instalar MySQL con ayuda de nuuestro bioinformatico, tal vez...
+
+
+proyecto jimmys | workflow bioinformatico | *denovo*
+-
+
+a. Diseñar parametros y combinaciones a probar en STACKS, utilizando solo jimenezi (excluir a traves de popmap o a traves de `mv` (mover los archivos) y `mkdir` a un nuevo directorio. 
+
+b. Montar todos los analisis denovo en el servidor **correns.csu**
+
+> Hablaremos un poco de servidores, de 'job schedulers', y de como funciona el 'secure shell'. 
+
+![secure-shell]()
+
+c. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi). 
+
+d. Montar los analisis de ipyrad en el servidor. 
+
+
+proyecto bichitos | workflow bioinformatico | *denovo*
+-
+a. 
 
 
 
