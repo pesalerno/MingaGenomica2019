@@ -90,7 +90,7 @@ h. Correr **denovo_map.pl** con todas las muestras utilizando los parametros ide
 proyecto jimmys | workflow bioinformatico | *denovo*
 -
 
-a. Diseñar parametros y combinaciones a probar en STACKS, utilizando solo jimenezi (excluir a traves de popmap o a traves de `mv` (mover los archivos) y `mkdir` a un nuevo directorio. 
+a. Diseñar parametros y combinaciones a probar en STACKS, basado en [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) y [esta publicacion](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf). Esto es utilizando solo jimenezi (excluir a traves de popmap o a traves de `mv` (mover los archivos) y `mkdir` a un nuevo directorio todas las epecies que no son jimenezi. 
 
 b. Montar todos los analisis denovo en el servidor **correns.csu**
 
@@ -107,7 +107,16 @@ d. Montar los analisis de ipyrad en el servidor.
 
 proyecto bichitos | workflow bioinformatico | *denovo*
 -
-a. 
+a. Diseñar parametros y combinaciones a probar en STACKS, basado en [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) y [esta publicacion](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf). Hacer esto para cada grupo. 
+
+b. Montar todos los analisis **denovo_map** en... algun servidor, idealmente!! Al menos en los grupos que tengan muchos individuos (si no, el computaror facilmente se quedara sin memoria RAM durante el ultimo paso). Hacer esto para todos los grupos. 
+
+c. Como van a tener que montar tantos analisis con pequeñs permutaciones de nombres y otras cosas, seria bueno si se animan a escribir un 'recursive script' utilizando algo como `for loops` en `python` para escribir todos los input files con una sola linea de comando! Algo asi: 
+
+	```python
+	for item in some_iterable_object:
+    	do_something()
+    	do_something_else()
 
 
 
