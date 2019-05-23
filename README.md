@@ -113,17 +113,23 @@ b. Montar todos los analisis **denovo_map** en... algun servidor, idealmente!! A
 
 c. Como van a tener que montar tantos analisis con pequeñs permutaciones de nombres y otras cosas, seria bueno si se animan a escribir un 'recursive script' utilizando algo como `for loops` en `python` para escribir todos los input files con una sola linea de comando! Algo asi: 
 
-	```python
 	for item in some_iterable_object:
     	do_something()
     	do_something_else()
-	```
+
+proyecto atelopitos | workflow bioinformatico | *denovo*
+-
+a. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi), utilizando como base este excelente [tutorial de ipyrad](https://ipyrad.readthedocs.io/tutorial_intro_cli.html) y tambien la siguiente figura:
+
+![figura-3a](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Figure-3a.png) 
+
+d. Montar los analisis de ipyrad en el servidor local de linux utilizando una coneccion remota a trves de [TeamViewer](https://www.teamviewer.com/es-mx/?pid=google.tv_teamviewer_misspellings.s.sa&gclid=CjwKCAjwm-fkBRBBEiwA966fZE2-chh49CWVa3YMTZYCLAIHZLea0SEZVBqjgcHeFWwiwzp7Qj5wthoCVWoQAvD_BwE). Para esto es posible que sea necesario utilizar el programa [`screen`](https://nathan.chantrell.net/linux/an-introduction-to-screen/) para que no muera el proceso en el servidor si se pierde la conexion, tal vez sea bueno preguntarle a algun computer guy! 
 
 
-Semana 7
+filtrando matrices
 --
 
-Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para el de novo genotyping, debemos exportar y filtrar la matriz de SNPs para tener ya nuestras matrices finales para los analisis 'downstream' de nuestros datos genomicos... para finalmente responder preguntas biologicas!! Para esto, vamos a tener que hacer unos cuantos pasos bioinformaticos (grep, awk, etc) para unir los pasos del *'pipeline'*, principalmente usando [plink](http://zzz.bwh.harvard.edu/plink/download.shtml) y [populations](http://catchenlab.life.illinois.edu/stacks/comp/populations.php)de **stacks**. 
+Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para el de novo genotyping, debemos exportar y filtrar las matrices de SNPs para tener ya nuestras matrices finales para los analisis 'downstream' de nuestros datos genomicos... para finalmente responder preguntas biologicas!! Para esto, vamos a tener que hacer unos cuantos pasos bioinformaticos (grep, awk, etc) para unir los pasos del *'pipeline'*, principalmente usando [plink](http://zzz.bwh.harvard.edu/plink/download.shtml) y [populations](http://catchenlab.life.illinois.edu/stacks/comp/populations.php)de **stacks**. 
 
 **plink | filtrando datos**
 
