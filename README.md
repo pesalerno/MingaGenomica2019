@@ -98,7 +98,9 @@ b. Montar todos los analisis denovo en el servidor **correns.csu**
 
 ![secure-shell](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/correns.png)
 
-c. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi), utilizando como base el fantastico [tutorial de ipyrad]() y tambien la siguiente figura: 
+c. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi), utilizando como base este excelente [tutorial de ipyrad](https://ipyrad.readthedocs.io/tutorial_intro_cli.html) y tambien la siguiente figura:
+
+![figura-3a](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Figure-3a.png) 
 
 d. Montar los analisis de ipyrad en el servidor. 
 
