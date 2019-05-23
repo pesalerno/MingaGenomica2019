@@ -52,14 +52,18 @@ A partir de la cuarta semana empezaremos a hacer el genotyping utilizando el pro
 Para **stacks** es necesario que se lean con mucho detenimiento [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) donde se explican las funciones de los tres parametros principales de stacks, y tambien esta publicacion de [Paris et al. 2017](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf), en la que se describen muchas de las cosas que estaremos haciendo en el "experimento de genotipificacion" que estaremos haciendo en los proximos pasos de la minga. 
 
 
-Para ipyrad es necesario que entiendan la Figura 3a de esta publicacion, ademas de 
+Para **ipyrad** lo mas importante es entender [este tutorial](https://ipyrad.readthedocs.io/tutorial_intro_cli.html), pero tambien pueden simplemente leerlo durante la minga a medida que montan los analisis basado en el tutorial. 
 
 
 
-Duraremos 2-4 semanas en el *denovo genotyping*, y en el proceso tambien estaremos graficando analisis preliminares en R utilizando el programa de genomica poblacional, [adegenet](http://adegenet.r-forge.r-project.org/), para observar potenciales sesgos dentro de nuestros datos. 
+Duraremos 2-4 semanas en el *denovo genotyping*, y en el proceso tambien estaremos graficando analisis preliminares en R utilizando el programa de genomica poblacional, [adegenet](http://adegenet.r-forge.r-project.org/), para observar potenciales sesgos dentro de nuestros datos. Tambien estaremos intentando escribir todos los metodos y resultados de la genotipificacion, incluyendo informacion de coverage por individuos, parametros usados y razonamiento, filtros, etc. 
+
+Tanto de **stacks** como de **ipyrad** estaremos extrayendo muchisima informacion acerca de resultados de genotipificacion, asi como es el caso de stacks, donde se obtiene toda la informacion de coverage y fragmentos secuenciados por individuo, lo cual debe ser reportado en resultados: 
+
+![stacks-coverage](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/stacks.png)
 
 
-Dado que hay los cuatro proyectos que estamos trabajando en la minga son tan distintos, cada liberia/proyecto tendra condiciones muy distintas que resultaran en que corramos distintos analisis, y que escojamos distintos parametros! Esto se discutira en clase. Cuando terminemos este paso, la meta es tener ya lista la genotipificacion de todos los proyectos, incluidos escritos los metodos y resultados, para luego comenzar con el filtrado de las matrices de datos.
+Dado que los cuatro proyectos de la minga son tan distintos, cada liberia/proyecto tendra condiciones muy distintas! Esto se discutira en clase. 
 
 > Abajo el primer esquema de lo que seran los workflows bioinformaticos de cada proyecto, los cuales iremos modificando a medida que vayamos avanzando.  
 
@@ -119,11 +123,11 @@ c. Como van a tener que montar tantos analisis con pequeñas permutaciones de no
 
 proyecto atelopitos | workflow bioinformatico | *denovo*
 -
-a. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras, utilizando como base este excelente [tutorial de ipyrad](https://ipyrad.readthedocs.io/tutorial_intro_cli.html) y tambien la siguiente figura:
+a. Diseñar los distintos clustering thresholds que seran utilizados en **ipyrad** para todas las muestras, utilizando como base este excelente [tutorial de ipyrad](https://ipyrad.readthedocs.io/tutorial_intro_cli.html) y tambien en la siguiente figura:
 
 ![figura-3a](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Figure-3a.png) 
 
-b. Montar los analisis de ipyrad en el servidor local de linux utilizando una coneccion remota a trves de [TeamViewer](https://www.teamviewer.com/es-mx/?pid=google.tv_teamviewer_misspellings.s.sa&gclid=CjwKCAjwm-fkBRBBEiwA966fZE2-chh49CWVa3YMTZYCLAIHZLea0SEZVBqjgcHeFWwiwzp7Qj5wthoCVWoQAvD_BwE). Para esto es posible que sea necesario utilizar el programa [`screen`](https://nathan.chantrell.net/linux/an-introduction-to-screen/) para que no muera el proceso en el servidor si se pierde la conexion, tal vez sea bueno preguntarle a algun computer guy! 
+b. Montar los analisis de **ipyrad** en el servidor local de linux utilizando una coneccion remota a traves de [TeamViewer](https://www.teamviewer.com/es-mx/?pid=google.tv_teamviewer_misspellings.s.sa&gclid=CjwKCAjwm-fkBRBBEiwA966fZE2-chh49CWVa3YMTZYCLAIHZLea0SEZVBqjgcHeFWwiwzp7Qj5wthoCVWoQAvD_BwE). Para esto es posible que sea necesario utilizar el programa [`screen`](https://nathan.chantrell.net/linux/an-introduction-to-screen/) para que no muera el proceso en el servidor si se pierde la conexion. 
 
 
 filtrando matrices
