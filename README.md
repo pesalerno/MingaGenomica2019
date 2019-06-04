@@ -137,11 +137,44 @@ Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para e
 
 **plink | filtrando datos**
 
-blah blah blah
+Luego de terminar de escoger los parametros mejores para genotyping, exportamos nuestra primera matriz de SNPs con un minimo de filtros en **populations**, que esta dentro del programa de **Stacks**, para luego filtrar esa matriz utilizando **plink**. 
+
+    populations -b 2 -P /path/to/populations/pop-comb-c/ -M /path/to/popmap/pop-map.txt -fstats -k -p 1 -r 0.2  -t 8 --structure --genepop --vcf --plink --write_random_snp
+
+
+Luego, filtramos en [PLINK](http://pngu.mgh.harvard.edu/~purcell/plink/summary.shtml), en varios pasos.
+
+Primero filtramos loci con demasiados datos que faltan:
+
+    ./plink --file input-name --geno 0.5 --recode --out output-filename_a --noweb
+
+Segundo, filtramos individuos con muchos datos que faltan: 
+
+    ./plink --file input-filename_a --mind 0.5 --recode --out output-filename_b --noweb
+
+Tercero, filtramos basado en frecuencia alelica menor (MAF): 
+
+    ./plink --file input-filename_b --maf 0.01 --recode --out output-filename_c --noweb
+
+Cuarto, veamos que tanto 'linkage' hay en nuestros datos, con el siguiente codigo: 
+
+    ./plink --file input-filename_c --r2 --out outputfilename
+    
+Es necesario eliminar loci basado en el analisis? De ser el caso, crear un 'blacklist' para excluir en plink con el codigo: 
+    
+    ./plink --file filename --exclude LD-loci-list.txt --recode --out LD-filtered
+
+>El blacklist debe estar en formato de un SNP por linea, con la identidad completa (locus mas posicion del SNP).
+
 
 **stacks | populations: exportando matriz final**
 
-blah blah blah
+Para obtener todas nuestras matrices y estadisiticas poblacionales finales, utilizamos un 'whitelist' de los loci y los individuos que pasaron todos los filtros de plink, y re-exportamos las matrices, en conjunto con estadisticas poblacionales de Fst, para ya llevar a cabo todos los analisis *downstream*. 
+
+El whitelist a usar en el programa populations es de un formato muy distinto al whitelist usado en plink. Por ello, hay que hacer una serie de find/replace arguments con greg en TextWrangler para obtener el siguiente formato: 
+
+    
+
 
 Semana 8
 ---
