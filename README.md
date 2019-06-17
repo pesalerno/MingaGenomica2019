@@ -223,7 +223,7 @@ Una vez filtradas nuestras matrices, ya podemos comenzar a analizar nuestros dat
 
 **adegenet | estructura poblacional**
 
-en esta etapa, es una buena idea correr el codigo basico de adegenet (PCA, DAPC, etc) para evaluar potenciales efectos de distintos *maf filter thresholds* en la estructura poblacional. 
+en esta etapa, es una buena idea correr el codigo basico de adegenet (PCA, DAPC, etc) para evaluar potenciales efectos de distintos *maf filter thresholds* en la estructura poblacional, asi como se ha encontrado en [esta publicacion reciente](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/MAF-thresholds.pdf). 
 
 **PCAdapt | genome scan for FST outlier loci**
 
