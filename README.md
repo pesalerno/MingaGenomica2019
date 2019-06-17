@@ -115,31 +115,38 @@ a. Diseñar parametros y combinaciones a probar en STACKS, basado en [este tutor
 
 b. Montar todos los analisis **denovo_map** en... algun servidor, idealmente!! Al menos en los grupos que tengan muchos individuos (si no, el computaror facilmente se quedara sin memoria RAM durante el ultimo paso). Hacer esto para todos los grupos. 
 
-c. Como van a tener que montar tantos analisis con pequeñas permutaciones de nombres y otras cosas, seria bueno si se animan a escribir un *'recursive script'* utilizando algo como `for loops` en `python` para escribir todos los input files con una sola linea de comando! Algo asi: 
-
-	for item in some_iterable_object:
-    	do_something()
-    	do_something_else()
-
-proyecto atelopitos | workflow bioinformatico | *denovo*
--
-a. Diseñar los distintos clustering thresholds que seran utilizados en **ipyrad** para todas las muestras, utilizando como base este excelente [tutorial de ipyrad](https://ipyrad.readthedocs.io/tutorial_intro_cli.html) y tambien en la siguiente figura:
-
-![figura-3a](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Figure-3a.png) 
-
-b. Montar los analisis de **ipyrad** en el servidor local de linux utilizando una coneccion remota a traves de [TeamViewer](https://www.teamviewer.com/es-mx/?pid=google.tv_teamviewer_misspellings.s.sa&gclid=CjwKCAjwm-fkBRBBEiwA966fZE2-chh49CWVa3YMTZYCLAIHZLea0SEZVBqjgcHeFWwiwzp7Qj5wthoCVWoQAvD_BwE). Para esto es posible que sea necesario utilizar el programa [`screen`](https://nathan.chantrell.net/linux/an-introduction-to-screen/) para que no muera el proceso en el servidor si se pierde la conexion. 
-
 
 filtrando matrices
 --
 
-Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para el de novo genotyping, debemos exportar y filtrar las matrices de SNPs para tener ya nuestras matrices finales para los analisis 'downstream' de nuestros datos genomicos... para finalmente responder preguntas biologicas!! Para esto, vamos a tener que hacer unos cuantos pasos bioinformaticos (grep, awk, etc) para unir los pasos del *'pipeline'*, principalmente usando [plink](http://zzz.bwh.harvard.edu/plink/download.shtml) y [populations](http://catchenlab.life.illinois.edu/stacks/comp/populations.php)de **stacks**. 
+Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para el de novo genotyping, debemos exportar y filtrar las matrices de SNPs para tener ya nuestras matrices finales para los analisis *'downstream'* de nuestros datos genomicos... para finalmente responder preguntas biologicas!! Para esto, vamos a tener que hacer unos cuantos pasos bioinformaticos (grep, awk, etc) para unir los pasos del *'pipeline'*, principalmente usando [plink](http://zzz.bwh.harvard.edu/plink/download.shtml) y [populations](http://catchenlab.life.illinois.edu/stacks/comp/populations.php) de **stacks**. 
+
+
+La version mas reciente de **stacks 2.0** no tiene implementado el formato `.ped` para exportar matrices de SNPs en populations, por lo que tenemos que exportar como `.vcf` y utlizar el programa [vcftools](https://vcftools.github.io/man_latest.html) tanto para transformar como para filtrar datos. Entonces, primero exportamos la matrix de **snps** en formato `.vcf` utilizando **populations**: 
+
+
+    populations -b 2 -P /path/to/populations/pop-comb-c/ -M /path/to/popmap/pop-map.txt -fstats -k -p 1 -r 0.2  -t 8 --structure --genepop --vcf --write_random_snp
+
+
+Por ende, primero tenemos que comenzar por instalar el programa, y ya que somos 'expertos' en github ;) utilicemos la plataforma para instalar el programa. En una ventana de terminal, idealmente en el *'home directory'* del usuario o en *'Applications'*, escriben: 
+
+	git clone https://github.com/vcftools/vcftools
+
+Luego hacemos `cd` al directorio nuevo de git que se nos clono, y escribimos: 
+
+	./autogen.sh
+	./configure
+	make
+	make install
+
+Si todo sale bien, deberiamos ya tener **vcftools** instalado en ese mismo directorio. Entonces, podemos transformar nuestro archivo de esta manera: 
+
+	vcftools --vcf path/to/file.vcf --plink --out filename
 
 **plink | filtrando datos**
 
-Luego de terminar de escoger los parametros mejores para genotyping, exportamos nuestra primera matriz de SNPs con un minimo de filtros en **populations**, que esta dentro del programa de **Stacks**, para luego filtrar esa matriz utilizando **plink**. 
+Ahora que tenemos nuestros archivos `.ped` y `.map`, podemos correr los filtros en plink, uno por uno, de la siguiente manera. 
 
-    populations -b 2 -P /path/to/populations/pop-comb-c/ -M /path/to/popmap/pop-map.txt -fstats -k -p 1 -r 0.2  -t 8 --structure --genepop --vcf --plink --write_random_snp
 
 
 Luego, filtramos en [PLINK](http://pngu.mgh.harvard.edu/~purcell/plink/summary.shtml), en varios pasos.
@@ -156,7 +163,9 @@ Tercero, filtramos basado en frecuencia alelica menor (MAF):
 
     ./plink --file input-filename_b --maf 0.01 --recode --out output-filename_c --noweb
 
-Cuarto, veamos que tanto 'linkage' hay en nuestros datos, con el siguiente codigo: 
+Puede que sea bueno investigar el efecto de distintos *'minor allele frequency thresholds'*, por lo que es bueno generar varios outputs con maf 0.01, 0.02, y 0.05, para luego ver en **adegenet** (ver abajo) si hay alguna relacion entre *maf threshold* y estructura poblacional. 
+
+Ahora, veamos que tanto *'linkage'* hay en nuestros datos, con el siguiente codigo: 
 
     ./plink --file input-filename_c --r2 --out outputfilename
     
@@ -166,16 +175,47 @@ Es necesario eliminar loci basado en el analisis? De ser el caso, crear un 'blac
 
 >El blacklist debe estar en formato de un SNP por linea, con la identidad completa (locus mas posicion del SNP).
 
+Finalmente, tambien podemos ver como varia el numero de SNPs de acuerdo a la posicion dentro del locus de RAD genotipificado, utilizando el siguiente codigo, visualizando los SNPs desde la posicion `/_80/` hasta `/_96/` con el siguiente codigo: 
+
+	cat loci-rows.txt | awk '/_80/ {count++} END {print count}'
+	cat loci-rows.txt | awk '/_81/ {count++} END {print count}'
+	...
+	cat loci-rows.txt | awk '/_96/ {count++} END {print count}'
+
+
+Se observa algun incremento muy alto en la frecuencia de SNPs hacia el final del locus? Vale la pena filtrar? De ser el caso, utilizar el siguiente codigo: 
+
+	cat loci_rows-to-filter.txt | awk '/_95/ {print}' > blacklist_95.txt
+
+Para crear el blacklist de los loci, para luego excluirlos en plink: 
+
+	plink --file Puma-filtered-maf_01 --exclude blacklist_95.txt --recode --out filtered_b --noweb
+
+
 
 **stacks | populations: exportando matriz final**
 
-Para obtener todas nuestras matrices y estadisiticas poblacionales finales, utilizamos un 'whitelist' de los loci y los individuos que pasaron todos los filtros de plink, y re-exportamos las matrices, en conjunto con estadisticas poblacionales de Fst, para ya llevar a cabo todos los analisis *downstream*. 
+Para obtener todas nuestras matrices y estadisiticas poblacionales finales, utilizamos un *'whitelist'* de los loci y los individuos que pasaron todos los filtros de plink, y re-exportamos las matrices, en conjunto con estadisticas poblacionales de Fst, para ya llevar a cabo todos los analisis *downstream*. 
 
-El whitelist a usar en el programa populations es de un formato muy distinto al whitelist usado en plink. Por ello, hay que hacer una serie de find/replace arguments con greg en TextWrangler para obtener el siguiente formato: 
+El *whitelist* a usar en el programa **populations** es de un formato muy distinto al *whitelist* usado en **plink**. Por ello, hay que hacer una serie de find/replace arguments con greg en TextWrangler para obtener el siguiente formatoa partir del archivo `.map`:
+
+	search for \d\t(\d*)_\d*\t\d\t\d*$
+	replace with \1 
+
+El whitelist para **populations** solo debe tener un locus por linea, sin la posicion del SNP asociado: 
+
+	3
+	7
+	521
+	11
+	46
+
+Finalmente, volvemos a correr el programa populations, utilizando un "whitelist" para exportar los SNPs basados en los filtros hecho en los pasos anteriores, y para asi obtener estadisticas y matrices finales. Se utiliza el siguiente codigo: 
+
+	populations -b 1 -P ./ -M ./popmap.txt  -p 1 -r 0.5 -W Pr-whitelist --write_random_snp --structure --vcf --genepop --fstats --phylip
+
 
     
-
-
 Semana 8
 ---
 
@@ -183,8 +223,13 @@ Una vez filtradas nuestras matrices, ya podemos comenzar a analizar nuestros dat
 
 **adegenet | estructura poblacional**
 
-blah blah blah
+en esta etapa, es una buena idea correr el codigo basico de adegenet (PCA, DAPC, etc) para evaluar potenciales efectos de distintos *maf filter thresholds* en la estructura poblacional. 
+
+**PCAdapt | genome scan for FST outlier loci**
+
+podemos separar las matrices (o los loci) basado en si son potencialmente neutrales o no, dependiendo de los analisis de interes para cada proyecto. 
+
 
 **SVDquartets | analisis filogenetico**
 
-blah blah blah
+si es de interes, podemos correr unos analisis filogeneticos rapidos (pero buenos en cuanto a metodologia) usando SVDquartets, el cual genera *species trees*. 
