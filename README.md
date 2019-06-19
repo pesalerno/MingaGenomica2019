@@ -128,7 +128,7 @@ La version mas reciente de **stacks 2.0** no tiene implementado el formato `.ped
     populations -P /path/to/populations/pop-comb-c/ -M /path/to/popmap/pop-map.txt -fstats -p 1 -r 0.2  -t 8 --structure --genepop --vcf --write_random_snp
 
 
-Por ende, primero tenemos que comenzar por instalar el programa, y como la version mas reciente de vcftools no parece funcionar (consistentemente en tres distintas maquinas OSX!), entonces intalemos una [version vieja de **vcftools**](https://sourceforge.net/projects/vcftools/files/vcftools_0.1.13.tar.gz/download), el cual se debe bajar automaticamente haciendo click en el link anterios, y luego lo descomprimimos utilizando el siguiente codigo: 
+Luego, debemos instalar **vcftools** para poder transformar el archivo a `.ped` y filtrar en plink. Como la version mas reciente de **vcftools** no parece funcionar (consistentemente en tres distintas maquinas OSX!), entonces intalemos una [version vieja de **vcftools**](https://sourceforge.net/projects/vcftools/files/vcftools_0.1.13.tar.gz/download), el cual se debe bajar automaticamente haciendo click en el link anterior, y luego lo descomprimimos utilizando el siguiente codigo: 
 
 	tar -xvf vcftools.version
 
@@ -144,11 +144,11 @@ Si todo sale bien, deberiamos ya tener **vcftools** instalado en ese mismo direc
 
 **plink | filtrando datos**
 
+Primero, instalemos **plink** bajando la [version binaria estable](http://zzz.bwh.harvard.edu/plink/download.shtml#download) de la pagina web, el cual no hay que compilar y con solo hacerle doble click al comprimido ya deberia darnos el ejecutable de plink dentro del directorio nuevo. 
+
+
 Ahora que tenemos nuestros archivos `.ped` y `.map`, podemos correr los filtros en plink, uno por uno, de la siguiente manera. 
 
-
-
-Luego, filtramos en [PLINK](http://pngu.mgh.harvard.edu/~purcell/plink/summary.shtml), en varios pasos.
 
 Primero filtramos loci con demasiados datos que faltan:
 
