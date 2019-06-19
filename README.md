@@ -125,17 +125,16 @@ Una vez escogida la combinacion ideal de parametros en stacks y en ipyrad para e
 La version mas reciente de **stacks 2.0** no tiene implementado el formato `.ped` para exportar matrices de SNPs en populations, por lo que tenemos que exportar como `.vcf` y utlizar el programa [vcftools](https://vcftools.github.io/man_latest.html) tanto para transformar como para filtrar datos. Entonces, primero exportamos la matrix de **snps** en formato `.vcf` utilizando **populations**: 
 
 
-    populations -b 2 -P /path/to/populations/pop-comb-c/ -M /path/to/popmap/pop-map.txt -fstats -k -p 1 -r 0.2  -t 8 --structure --genepop --vcf --write_random_snp
+    populations -P /path/to/populations/pop-comb-c/ -M /path/to/popmap/pop-map.txt -fstats -p 1 -r 0.2  -t 8 --structure --genepop --vcf --write_random_snp
 
 
-Por ende, primero tenemos que comenzar por instalar el programa, y ya que somos 'expertos' en github ;) utilicemos la plataforma para instalar el programa. En una ventana de terminal, idealmente en el *'home directory'* del usuario o en *'Applications'*, escriben: 
+Por ende, primero tenemos que comenzar por instalar el programa, y como la version mas reciente de vcftools no parece funcionar (consistentemente en tres distintas maquinas OSX!), entonces intalemos una [version vieja de **vcftools**](https://sourceforge.net/projects/vcftools/files/vcftools_0.1.13.tar.gz/download), el cual se debe bajar automaticamente haciendo click en el link anterios, y luego lo descomprimimos utilizando el siguiente codigo: 
 
-	git clone https://github.com/vcftools/vcftools
+	tar -xvf vcftools.version
 
-Luego hacemos `cd` al directorio nuevo de git que se nos clono, y escribimos: 
+Luego hacemos `cd` al directorio nuevo de vcftools, y escribimos: 
 
-	./autogen.sh
-	./configure
+	./configure ##puede que este paso no sea necesario, vean primero si tienen el archivo "makefile"
 	make
 	make install
 
