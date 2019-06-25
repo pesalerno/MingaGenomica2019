@@ -231,11 +231,11 @@ Una vez filtradas nuestras matrices, ya podemos comenzar a analizar nuestros dat
 
 **adegenet | estructura poblacional**
 
-en esta etapa, es una buena idea correr el codigo basico de adegenet (PCA, DAPC, etc) para evaluar potenciales efectos de distintos *maf filter thresholds* en la estructura poblacional, asi como se ha encontrado en [esta publicacion reciente](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/MAF-thresholds.pdf). El codigo general que usaremos sera basado en [este](https://github.com/pesalerno/MingaGenomica2019/blob/master/minga.R), pero mantengan en mente que los multiples **tutoriales/vignettes** de adegenet son excelentes y muy faciles de entender! 
+en esta etapa, es una buena idea correr el codigo basico de adegenet (PCA, DAPC, etc) para evaluar potenciales efectos de distintos *maf filter thresholds* en la estructura poblacional, asi como se ha encontrado en [esta publicacion reciente](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/MAF-thresholds.pdf). El codigo general que usaremos sera basado en [este](https://github.com/pesalerno/MingaGenomica2019/blob/master/adegenet_minga.R), pero mantengan en mente que los multiples **tutoriales/vignettes** de adegenet son excelentes y muy faciles de entender! 
 
 **PCAdapt | genome scan for FST outlier loci**
 
-podemos separar las matrices (o los loci) basado en si son potencialmente neutrales o no, dependiendo de los analisis de interes para cada proyecto. 
+podemos separar las matrices (o los loci) basado en si son potencialmente neutrales o no, dependiendo de los analisis de interes para cada proyecto. Pueden basarse en [este codigo](https://github.com/pesalerno/MingaGenomica2019/blob/master/PCAdapt-minga.R) para comenzar a hacer los analisis, pero tendran que ver de acuerdo a cada matriz de datos.  
 
 
 **SVDquartets | analisis filogenetico**
