@@ -191,8 +191,17 @@ Para crear el blacklist de los loci, para luego excluirlos en plink:
 	plink --file Puma-filtered-maf_01 --exclude blacklist_95.txt --recode --out filtered_b --noweb
 
 
+Estimando endogamia a nivel individual 
+--
+Tambien, preferiblemente una vez estimado y filtrado el linkage, podemos estimar endogamia (inbreeding) a nivel individual con el siguiente codigo: 
 
-**stacks | populations: exportando matriz final**
+	plink --noweb --file mydata --het --out outputfilename
+
+Esto nos da un archivo `.het` el cual tiene un valor, **F** y que es un estimado de inbreeding basado en niveles de heterocigosidad esperada y observada. 
+
+
+exportando matriz final en stacks | populations
+-- 
 
 Para obtener todas nuestras matrices y estadisiticas poblacionales finales, utilizamos un *'whitelist'* de los loci y los individuos que pasaron todos los filtros de plink, y re-exportamos las matrices, en conjunto con estadisticas poblacionales de Fst, para ya llevar a cabo todos los analisis *downstream*. 
 
