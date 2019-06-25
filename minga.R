@@ -7,11 +7,8 @@ library("hierfstat")
 
 
 
-#myFile <- import2genind("Puma_75_maf_01.stru") ##12786 SNPs and 134 inds
-#myFile <- import2genind("Puma_75_maf_02.stru") ##11915 SNPs and 134 inds
-#myFile <- import2genind("Puma_75_maf_05.stru") ###10315 SNPs and 134 inds
 
-myFile <- import2genind("Puma_filtered_08_17_17_POP1.stru") #12456 SNPs and 134 inds
+myFile <- import2genind("filename.stru") ??? SNPs and ??? inds
 
 
 ##QUESTIONS FOR STRUCTURE FILES:
