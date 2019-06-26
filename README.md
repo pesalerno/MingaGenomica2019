@@ -205,10 +205,16 @@ exportando matriz final en stacks | populations
 
 Para obtener todas nuestras matrices y estadisiticas poblacionales finales, utilizamos un *'whitelist'* de los loci y los individuos que pasaron todos los filtros de plink, y re-exportamos las matrices, en conjunto con estadisticas poblacionales de Fst, para ya llevar a cabo todos los analisis *downstream*. 
 
-El *whitelist* a usar en el programa **populations** es de un formato muy distinto al *whitelist* usado en **plink**. Por ello, hay que hacer una serie de find/replace arguments con greg en TextWrangler para obtener el siguiente formatoa partir del archivo `.map`:
+El *whitelist* a usar en el programa **populations** se puede generar facilmente abriendo el archivo `.map` en **TextWrangler** (o editor de texto similar) y haciendo grep (find/replace, pero asegurandose se que grep esta seleccionado: 
 
-	search for \d\t(\d*)_\d*\t\d\t\d*$
-	replace with \1 
+![]()
+
+ y usamos el siguiente codigo: 
+
+	#search for: 
+	\d\t(\d*)_\d*\t\d\t\d*$
+	#replace with: 
+	\1 
 
 El whitelist para **populations** solo debe tener un locus por linea, sin la posicion del SNP asociado: 
 
@@ -220,9 +226,9 @@ El whitelist para **populations** solo debe tener un locus por linea, sin la pos
 
 Finalmente, volvemos a correr el programa populations, utilizando un "whitelist" para exportar los SNPs basados en los filtros hecho en los pasos anteriores, y para asi obtener estadisticas y matrices finales. Se utiliza el siguiente codigo: 
 
-	populations -b 1 -P ./ -M ./popmap.txt  -p 1 -r 0.5 -W Pr-whitelist --write_random_snp --structure --vcf --genepop --fstats --phylip
+	populations -P ./path/to/denovo/outputs -M ./path/to/popmap.txt  -p 1 -r 0.1 -W SNPs_whitelist --write_random_snp --structure --vcf --genepop --fstats --phylip
 
-
+> ojo: revisar el codigo de arriba para asegurarse de que sirve en populations de la version de [stacks 2.0!](http://catchenlab.life.illinois.edu/stacks/comp/populations.php)! 
     
 Semana 8
 ---
