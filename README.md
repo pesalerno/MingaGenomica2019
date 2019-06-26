@@ -203,11 +203,11 @@ Esto nos da un archivo `.het` el cual tiene un valor, **F** y que es un estimado
 exportando matriz final en stacks | populations
 -- 
 
-Para obtener todas nuestras matrices y estadisiticas poblacionales finales, utilizamos un *'whitelist'* de los loci y los individuos que pasaron todos los filtros de plink, y re-exportamos las matrices, en conjunto con estadisticas poblacionales de Fst, para ya llevar a cabo todos los analisis *downstream*. 
+Para obtener todas nuestras matrices y estadisiticas poblacionales finales, utilizamos un *'whitelist'* de los loci (lista de loci para incluir, todo lo demas se excluye) y los individuos (usando un nuevo popmap) que pasaron todos los filtros de plink, y re-exportamos las matrices, en conjunto con estadisticas poblacionales de Fst, heterocigosidad, etc, para tener ciertas estadisticas importantes para reportar, y ademas ya llevar a cabo los analisis *downstream* con matrices limpias y con menos potenciales de errores. 
 
-El *whitelist* a usar en el programa **populations** se puede generar facilmente abriendo el archivo `.map` en **TextWrangler** (o editor de texto similar) y haciendo grep (find/replace, pero asegurandose se que grep esta seleccionado: 
+El *whitelist* a usar en el programa **populations** se puede generar facilmente abriendo el archivo `.map` en **TextWrangler** (o editor de texto similar) y haciendo `grep` (find/replace, pero asegurandose se que grep esta seleccionado: 
 
-![]()
+![grep-check](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/BBedit_grep.png)
 
  y usamos el siguiente codigo: 
 
@@ -224,20 +224,23 @@ El whitelist para **populations** solo debe tener un locus por linea, sin la pos
 	11
 	46
 
-Finalmente, volvemos a correr el programa populations, utilizando un "whitelist" para exportar los SNPs basados en los filtros hecho en los pasos anteriores, y para asi obtener estadisticas y matrices finales. Se utiliza el siguiente codigo: 
+Finalmente, volvemos a correr el programa populations, utilizando un *"whitelist"*  para exportar los SNPs basados en los filtros hecho en los pasos anteriores, y para asi obtener estadisticas y matrices finales. Se utiliza el siguiente codigo: 
 
 	populations -P ./path/to/denovo/outputs -M ./path/to/popmap.txt  -p 1 -r 0.1 -W SNPs_whitelist --write_random_snp --structure --vcf --genepop --fstats --phylip
 
-> ojo: revisar el codigo de arriba para asegurarse de que sirve en populations de la version de [stacks 2.0!](http://catchenlab.life.illinois.edu/stacks/comp/populations.php)! 
+>OJO: revisar el codigo de arriba para asegurarse de que todo sirve en populations de la version de [stacks 2.0!](http://catchenlab.life.illinois.edu/stacks/comp/populations.php)! 
     
 Semana 8
 ---
 
-Una vez filtradas nuestras matrices, ya podemos comenzar a analizar nuestros datos. En este caso, el primer analisis, en cierta forma exploratorio, que haremos con la matriz obtenida en **stacks** seran analisis basicos de estructura poblacional (PCA, DAPC) en [adegenet](http://adegenet.r-forge.r-project.org/files/tutorial-basics.pdf) en R, y con los datos obtenidos en **ipyrad** correremos un analisis filogenetico de coalescencia con soportes de bootstrapping utilizando [SVDquartets](https://www.asc.ohio-state.edu/kubatko.2/software/SVDquartets/), el cual es implementado en el programa [PAUP*](http://paup.phylosolutions.com/). 
+Una vez filtradas nuestras matrices, ya podemos comenzar a analizar nuestros datos. En este caso, el primer analisis, en cierta forma exploratorio, que haremos con la matriz obtenida en **stacks** seran analisis basicos de estructura poblacional (PCA, DAPC) en R. 
+
 
 **adegenet | estructura poblacional**
 
-en esta etapa, es una buena idea correr el codigo basico de adegenet (PCA, DAPC, etc) para evaluar potenciales efectos de distintos *maf filter thresholds* en la estructura poblacional, asi como se ha encontrado en [esta publicacion reciente](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/MAF-thresholds.pdf). El codigo general que usaremos sera basado en [este](https://github.com/pesalerno/MingaGenomica2019/blob/master/adegenet_minga.R), pero mantengan en mente que los multiples **tutoriales/vignettes** de adegenet son excelentes y muy faciles de entender! 
+en esta etapa, es una buena idea correr el codigo basico de [adegenet](http://adegenet.r-forge.r-project.org/files/tutorial-basics.pdf) (PCA, DAPC, etc) para evaluar potenciales efectos de distintos *maf filter thresholds* en la estructura poblacional, asi como se ha encontrado en [esta publicacion reciente](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/MAF-thresholds.pdf). El codigo general que usaremos sera basado en [este](https://github.com/pesalerno/MingaGenomica2019/blob/master/adegenet_minga.R), pero mantengan en mente que los multiples **tutoriales/vignettes** de adegenet son excelentes y muy faciles de entender! 
+
+
 
 **PCAdapt | genome scan for FST outlier loci**
 
@@ -246,4 +249,5 @@ podemos separar las matrices (o los loci) basado en si son potencialmente neutra
 
 **SVDquartets | analisis filogenetico**
 
-si es de interes, podemos correr unos analisis filogeneticos rapidos (pero buenos en cuanto a metodologia) usando SVDquartets, el cual genera *species trees*. 
+si es de interes, podemos correr unos analisis filogeneticos rapidos (pero buenos en cuanto a metodologia) usando [SVDquartets](https://www.asc.ohio-state.edu/kubatko.2/software/SVDquartets/), el cual es implementado en el programa [PAUP\*](http://paup.phylosolutions.com/) y genera *species trees* con soportes de bootstrap. 
+
