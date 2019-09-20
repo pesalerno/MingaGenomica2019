@@ -3,7 +3,15 @@ MingaGenomica2019
 
 Bienvenidos a la **Minga Genomica PUCE 2019!** En esta especie de taller de *'iniciacion a la bioinformatica'* para ecologos y biologos evolutivos basados en Quito, estaremos colaborando en nuestros proyectos genomicos (con datos reales de proxima generacion obtenidos recientemente a traves del protocolo ddRAD) a medida que aprendemos los pasos bioinformaticos para obtener una matriz de SNPs y publicar nuestros datos genomicos! 
 
-Antes que nada, es importante que comiencen a familiarizarse con lo que yo llamo *'hablarle al computador'*, es decir, entender el ambiente del **bash/shell**. Para eso, por favor lean esta leccion de 10 minutos de [comenzando con shell](https://swcarpentry.github.io/shell-novice/01-intro/index.html) ademas de unicamente las primeras dos secciones (**home directory variation** y **slashes**) de la [segunda leccion de shell](https://swcarpentry.github.io/shell-novice/02-filedir/index.html) para que asi ya estemos un poquito familarizados con este ambiente y con el concepto de no tener una interface GUI!
+Para cada proyecto, creamos un repositorio donde colocamos todos los pasos del workflow bioinformatico, para asi tener datos abiertos y perfecto seguimiento de todos los pasos una vez sea publicado el manuscrito. Aca estan los repositorios respectivos: 
+
+1. Proyecto 1: [**HypsiBoana de la Gran Sabana**](https://github.com/pesalerno/Hypsiboas-genomics)
+2. Proyecto 2: [**Genomica poblacional de insectos glaciares**]()
+3. Proyecto 3: [**Flujo genico y fenotipo de ranas venenosas**]()
+
+------
+
+>Antes que nada, es importante que comiencen a familiarizarse con lo que yo llamo *'hablarle al computador'*, es decir, entender el ambiente del **bash/shell**. Para eso, por favor lean esta leccion de 10 minutos de [comenzando con shell](https://swcarpentry.github.io/shell-novice/01-intro/index.html) ademas de unicamente las primeras dos secciones (**home directory variation** y **slashes**) de la [segunda leccion de shell](https://swcarpentry.github.io/shell-novice/02-filedir/index.html) para que asi ya estemos un poquito familarizados con este ambiente y con el concepto de no tener una interface GUI!
 
 Semana 1
 ---
@@ -64,56 +72,6 @@ Tanto de **stacks** como de **ipyrad** estaremos extrayendo muchisima informacio
 
 
 Dado que los cuatro proyectos de la minga son tan distintos, cada liberia/proyecto tendra condiciones muy distintas! Esto se discutira en clase. 
-
-> Abajo el primer esquema de lo que seran los workflows bioinformaticos de cada proyecto, los cuales iremos modificando a medida que vayamos avanzando.  
-
-
-proyecto **toñitos** | workflow bioinformatico | *denovo*
--
-a. Reunir todos los 'replicates' en un mismo directorio, de acuerdo a lo descrito por [Mastretta-Yanes et al](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Mastretta-Yanes-etal-2015.pdf).
-
-b. Ponerle los nombres a los replicates acorde con lo necesario: 
-
-> Sample1 (original), Sample1_r (replicate)
-
-c. Hacer el diseño de los parametros a probar con los replicates basado en [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) y [esta publicacion](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf). 
-
-d. Montar todos los replicate analyses en el servidor **correns.csu**
-
-e. Intentar instalar MySQL con ayuda de nuuestro bioinformatico, tal vez... si no, pedimos ayuda a Chris K en este paso (creo que es lo mejor basado en experiencias previas). 
-
-f. Terminar el workflow de los 'replicate analyses' siguiendo el workflow de daryl en nuestro proyecto de los [**pumas**](https://github.com/pesalerno/PUMAgenomics).
-
-g. Concatenar los archivos de los duplicados, en un directorio separado, utilizando `cat` y exportando a un archivo nuevo, algo asi: 
-
-	cat seqfile001.fasta seqfile002.fasta > seqcombined.fasta
-
-h. Correr **denovo_map.pl** con todas las muestras utilizando los parametros ideales basados en las tasas de error calculadas en los pasos anteriores. 
-
-
-proyecto jimmys | workflow bioinformatico | *denovo*
--
-
-a. Diseñar parametros y combinaciones a probar en STACKS, basado en [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) y [esta publicacion](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf). Esto es utilizando solo jimenezi (excluir a traves de popmap o a traves de `mv` (mover los archivos) y `mkdir` a un nuevo directorio todas las epecies que no son jimenezi. 
-
-b. Montar todos los analisis denovo en el servidor **correns.csu**
-
-> Hablaremos un poco de servidores, de 'job schedulers', y de como funciona el 'secure shell'. 
-
-![secure-shell](https://github.com/pesalerno/MingaGenomica2019/blob/master/fotos/correns.png)
-
-c. Diseñar los distintos clustering thresholds que seran utilizados en ipyrad para todas las muestras (aunque tal vez con un 'subset' de jimenezi), utilizando como base este excelente [tutorial de ipyrad](https://ipyrad.readthedocs.io/tutorial_intro_cli.html) y tambien la siguiente figura:
-
-![figura-3a](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Figure-3a.png) 
-
-d. Montar los analisis de ipyrad en el servidor **correns.csu**. 
-
-
-proyecto bichitos | workflow bioinformatico | *denovo*
--
-a. Diseñar parametros y combinaciones a probar en STACKS, basado en [este tutorial](http://catchenlab.life.illinois.edu/stacks/param_tut.php) y [esta publicacion](https://github.com/pesalerno/MingaGenomica2019/blob/master/lecturas/Paris-etal-2017.pdf). Hacer esto para cada grupo. 
-
-b. Montar todos los analisis **denovo_map** en... algun servidor, idealmente!! Al menos en los grupos que tengan muchos individuos (si no, el computaror facilmente se quedara sin memoria RAM durante el ultimo paso). Hacer esto para todos los grupos. 
 
 
 filtrando matrices
